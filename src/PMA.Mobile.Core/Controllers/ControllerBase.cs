@@ -1,14 +1,14 @@
 ﻿using Cirrious.MvvmCross.Plugins.Controllers;
 using Cirrious.MvvmCross.Plugins.Messenger;
 using Cirrious.MvvmCross.ViewModels;
-using Meetapp.Mobile.Core.Events;
+using PMA.Mobile.Core.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Meetapp.Mobile.Core.Controllers
+namespace PMA.Mobile.Core.Controllers
 {
     public abstract class ControllerBase<TViewModel> : MvxController<TViewModel>
         where TViewModel : class, IMvxViewModel

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Meetapp.Mobile.Core.Events
+namespace PMA.Mobile.Core.Events
 {
     public class EventBase : MvxMessage
     {

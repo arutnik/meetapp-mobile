@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Meetapp.Mobile.Core.ViewModels
+namespace PMA.Mobile.Core.ViewModels
 {
     public class SplashViewModel : ControllerViewModelBase
     {

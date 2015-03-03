@@ -2,13 +2,13 @@ using Cirrious.CrossCore;
 using Cirrious.CrossCore.IoC;
 using Cirrious.MvvmCross.Plugins.Controllers;
 
-namespace Meetapp.Mobile.Core
+namespace PMA.Mobile.Core
 {
     public class App : Cirrious.MvvmCross.ViewModels.MvxApplication
     {
         public override void Initialize()
         {
-            RegisterAppStart<ViewModels.FirstViewModel>();
+            RegisterAppStart<ViewModels.SplashViewModel>();
         }
 
         public void InitializeIOC()

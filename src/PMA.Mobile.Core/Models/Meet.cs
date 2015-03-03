@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Meetapp.Mobile.Core.Models
+namespace PMA.Mobile.Core.Models
 {
     /// <summary>
     /// This models the basic properties of a Meet. 
