@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace PMA.Mobile.Core.Models
 {
-    public class PersonName
+    /// <summary>
+    /// Models an interest.
+    /// </summary>
+    public class Interest
     {
     }
 }

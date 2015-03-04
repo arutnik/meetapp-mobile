@@ -15,5 +15,28 @@ namespace PMA.Mobile.Core.Models
         /// The user that is hosting the Meet.
         /// </summary>
         public UserRef HostUser { get; set; }
+
+        public string Title { get; set; }
+
+        public MeetStatus Status { get; set; }
+
+        public DateTime StartTimeUtc { get; set; }
+
+        public TimeSpan Length { get; set; }
+
+        /// <summary>
+        /// TODO
+        /// </summary>
+        public object Location { get; set; }
+
+        
+
+        public double FeeMinimum { get; set; }
+
+        public double FeeMaximum { get; set; }
+
+        public Interest[] Interests { get; set; }
+
+        public string MainPictureUri { get; set; }
     }
 }

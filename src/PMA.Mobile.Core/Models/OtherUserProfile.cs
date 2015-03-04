@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace PMA.Mobile.Core.Models
 {
-    public class PersonName
+    /// <summary>
+    /// The Profile data for some other
+    /// non local user.
+    /// </summary>
+    public class OtherUserProfile : UserProfileBase
     {
+        
     }
 }
