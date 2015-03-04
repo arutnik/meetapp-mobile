@@ -8,7 +8,7 @@ namespace PMA.Mobile.Core
     {
         public override void Initialize()
         {
-            RegisterAppStart<ViewModels.SplashViewModel>();
+            RegisterAppStart<ViewModels.SplashScreenViewModel>();
         }
 
         public void InitializeIOC()

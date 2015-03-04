@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PMA.Mobile.Core.ViewModels
 {
-    public class SplashViewModel : ControllerViewModelBase
+    public class SplashScreenViewModel : ControllerViewModelBase
     {
     }
 }
