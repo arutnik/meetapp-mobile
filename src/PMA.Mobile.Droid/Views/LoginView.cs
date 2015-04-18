@@ -38,7 +38,7 @@ namespace PMA.Mobile.Droid.Views
 		{
 			if (user != null)
 			{
-				Mvx.Trace("Got the user {0}", user.FirstName);
+				Mvx.Trace("Got the user {0} {1}", user.FirstName, Session.ActiveSession.AccessToken);
 			}
 			else
 			{

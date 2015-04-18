@@ -45,7 +45,7 @@ namespace PMA.Mobile.Droid.Views
 
 			if (session == null)
 			{
-				ViewModel.OnIsLoggedIn.Execute(false);
+				//ViewModel.OnIsLoggedIn.Execute(false);
 			}
 		}
 
@@ -53,11 +53,12 @@ namespace PMA.Mobile.Droid.Views
 		{
 			if (session != null && session.IsOpened)
 			{
-				ViewModel.OnIsLoggedIn.Execute(true);
+				Mvx.Trace("Got the user at:{0}", Session.ActiveSession.AccessToken);
+				//ViewModel.OnIsLoggedIn.Execute(true);
 			}
 			else
 			{
-				ViewModel.OnIsLoggedIn.Execute(false);
+				//ViewModel.OnIsLoggedIn.Execute(false);
 			}
 		}
 	}
