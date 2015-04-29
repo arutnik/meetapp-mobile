@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -90,6 +90,7 @@
     <Compile Include="Views\MainFrameView.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
@@ -113,11 +114,7 @@
     <AndroidResource Include="Resources\layout\activity_main_frame.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
-  <ItemGroup>
-    <Folder Include="Startup\" />
-    <Folder Include="Presentation\" />
-    <Folder Include="Views\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\PMA.Mobile.Core\PMA.Mobile.Core.csproj">
       <Project>{F0FC5B6E-B875-44B5-99F2-E22FA9727307}</Project>
