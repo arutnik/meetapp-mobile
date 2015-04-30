@@ -1,5 +1,6 @@
 using Cirrious.CrossCore;
 using Cirrious.CrossCore.IoC;
+using System.Linq;
 using Cirrious.MvvmCross.Plugins.Controllers;
 
 namespace PMA.Mobile.Core

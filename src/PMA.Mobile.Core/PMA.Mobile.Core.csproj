@@ -70,6 +70,7 @@
     <Compile Include="ViewModels\MainFrameViewModel.cs" />
     <Compile Include="Controllers\MainFrameController.cs" />
     <Compile Include="ViewModels\UpdateProfileViewModel.cs" />
+    <Compile Include="Services\Auth\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

@@ -15,12 +15,17 @@ using Xamarin.Facebook;
 using Cirrious.CrossCore;
 using Android.Graphics;
 using Xamarin.Facebook.Widget;
+using PMA.Mobile.Core.ViewModels;
 
 namespace PMA.Mobile.Droid.Views
 {
 	[Activity (Label = "LoginView")]			
 	public class LoginView : MvxActivity, Session.IStatusCallback, Request.IGraphUserCallback, LoginButton.IUserInfoChangedCallback
 	{
+		public LoginViewModel LoginViewModel
+		{
+			get { return ViewModel as LoginViewModel; }
+		}
 
 		protected override void OnViewModelSet ()
 		{
@@ -38,6 +43,10 @@ namespace PMA.Mobile.Droid.Views
 		{
 			if (user != null)
 			{
+				LoginViewModel.LogInWithFacebook.ExecuteAsync (new LoginViewModel.FacebookLoginInfo () {
+					FacebookId = user.Id,
+					FacebookAccessToken = Session.ActiveSession.AccessToken
+				});
 				Mvx.Trace("Got the user {0} {1}", user.FirstName, Session.ActiveSession.AccessToken);
 			}
 			else
@@ -71,6 +80,10 @@ namespace PMA.Mobile.Droid.Views
 		{
 			if (user != null)
 			{
+				LoginViewModel.LogInWithFacebook.ExecuteAsync (new LoginViewModel.FacebookLoginInfo () {
+					FacebookId = user.Id,
+					FacebookAccessToken = Session.ActiveSession.AccessToken
+				});
 				Mvx.Trace("Got the user {0}", user.FirstName);
 			}
 			else

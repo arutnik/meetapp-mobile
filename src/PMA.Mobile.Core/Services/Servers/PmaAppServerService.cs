@@ -138,7 +138,7 @@ namespace PMA.Mobile.Core.Services.Servers
 
         string GetBaseUrl()
         {
-            return @"http://192.168.1.3:3000";
+            return @"http://192.168.1.3:3000/api";
         }
 
         public class ServerGenericResult
