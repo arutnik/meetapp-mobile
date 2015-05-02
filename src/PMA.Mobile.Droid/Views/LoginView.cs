@@ -16,6 +16,7 @@ using Cirrious.CrossCore;
 using Android.Graphics;
 using Xamarin.Facebook.Widget;
 using PMA.Mobile.Core.ViewModels;
+using Newtonsoft.Json;
 
 namespace PMA.Mobile.Droid.Views
 {
@@ -43,16 +44,29 @@ namespace PMA.Mobile.Droid.Views
 		{
 			if (user != null)
 			{
-				LoginViewModel.LogInWithFacebook.ExecuteAsync (new LoginViewModel.FacebookLoginInfo () {
-					FacebookId = user.Id,
-					FacebookAccessToken = Session.ActiveSession.AccessToken
-				});
+				LoginViewModel.LogInWithFacebook.ExecuteAsync (CreateLogInInfo(user));
 				Mvx.Trace("Got the user {0} {1}", user.FirstName, Session.ActiveSession.AccessToken);
 			}
 			else
 			{
 				Mvx.Error("Failed to get user.");
 			}
+		}
+
+		LoginViewModel.FacebookLoginInfo CreateLogInInfo(Xamarin.Facebook.Model.IGraphUser user)
+		{
+			var model = new LoginViewModel.FacebookLoginInfo () {
+				FacebookId = user.Id,
+				FacebookAccessToken = Session.ActiveSession.AccessToken
+			};
+
+			var fbUser = new {
+				firstName = user.FirstName,
+				lastName = user.LastName,
+				gender = user.GetProperty("gender").ToString()
+			};
+			model.FacebookUserSerialized = JsonConvert.SerializeObject (fbUser);
+			return model;
 		}
 
 		protected override void OnActivityResult (int requestCode, Result resultCode, Intent data)
@@ -80,10 +94,7 @@ namespace PMA.Mobile.Droid.Views
 		{
 			if (user != null)
 			{
-				LoginViewModel.LogInWithFacebook.ExecuteAsync (new LoginViewModel.FacebookLoginInfo () {
-					FacebookId = user.Id,
-					FacebookAccessToken = Session.ActiveSession.AccessToken
-				});
+				LoginViewModel.LogInWithFacebook.ExecuteAsync (CreateLogInInfo(user));
 				Mvx.Trace("Got the user {0}", user.FirstName);
 			}
 			else

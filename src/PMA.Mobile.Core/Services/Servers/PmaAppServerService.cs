@@ -29,7 +29,7 @@ namespace PMA.Mobile.Core.Services.Servers
                     var client = CreateClient(url);
 
                     return await client
-                        .PostJsonAsync(new { fbId = facebookId, fbAccessToken = facebookAccessToken })
+								.PostJsonAsync(new { fbId = facebookId, fbAccessToken = facebookAccessToken, fbUser = JsonConvert.DeserializeObject<JToken>(facebookUserSerialized) })
                         .ReceiveJson<ServerGenericResult>();
                 })
                 .OnCode(400, LogHttpErrorAndQuit, GetResultFromHttpException)
