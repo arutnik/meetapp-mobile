@@ -7,15 +7,11 @@ using System.Threading.Tasks;
 namespace PMA.Mobile.Core.Models
 {
     /// <summary>
-    /// Models an interest.
+    /// Base class for objects that can be saved locally.
     /// </summary>
-    public class Interest : DataRecord
+    public abstract class DataRecord
     {
-        public string Id { get; set; }
-
-        public override object PrimaryKey
-        {
-            get { return null; }
-        }
+        public abstract object PrimaryKey
+        { get; }
     }
 }

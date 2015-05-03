@@ -14,7 +14,7 @@ using Cirrious.CrossCore;
 
 namespace PMA.Mobile.Core.Services.Servers
 {
-    public class PmaAppServerService : IPmaAppServerService
+    public class PmaAppServerService : IPmaAppServer
     {
         public async Task<PmaAppServerResult<ServerLoginResult>> LogInWithFacebook(string facebookId, string facebookAccessToken, string facebookUserSerialized)
         {
@@ -34,6 +34,7 @@ namespace PMA.Mobile.Core.Services.Servers
                 })
                 .OnCode(400, LogHttpErrorAndQuit, GetResultFromHttpException)
                 .OnCode(404, LogHttpErrorAndContinue, GetResultFromHttpException)
+                .OnCode(500, LogHttpErrorAndContinue, GetResultFromHttpException)
                 .OnAnyOtherError(LogGeneralErrorAndContinue, GetResultFromGeneralException)
                 .Execute()
                 ;
@@ -51,14 +52,18 @@ namespace PMA.Mobile.Core.Services.Servers
                 var clientResult = new ServerLoginResult();
 
                 if (serverResult.Result["userId"] == null)
-                    throw new Exception();
+                    throw new Exception("User id not in result");
 
                 if (serverResult.Result["password"] == null)
-                    throw new Exception();
+                    throw new Exception("password not in result");
+
+                if (serverResult.Result["userProfileId"] == null)
+                    throw new Exception("userProfileId not in result");
 
                 clientResult.UserId = serverResult.Result["userId"].Value<String>();
                 clientResult.Password = serverResult.Result["userId"].Value<String>();
-
+                clientResult.UserProfileId = serverResult.Result["userProfileId"].Value<string>();
+                 
                 return new PmaAppServerResult<ServerLoginResult>()
                 {
                     Result = clientResult

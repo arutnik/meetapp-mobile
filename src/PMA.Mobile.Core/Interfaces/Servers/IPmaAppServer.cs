@@ -10,7 +10,7 @@ namespace PMA.Mobile.Core.Interfaces.Servers
     /// <summary>
     /// Defines all endpoints for communicating with the PMA app server.
     /// </summary>
-    public interface IPmaAppServerService
+    public interface IPmaAppServer
     {
 
         Task<PmaAppServerResult<ServerLoginResult>> LogInWithFacebook(string facebookId, string facebookAccessToken, string facebookUserSerialized);

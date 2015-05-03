@@ -38,8 +38,11 @@
     <Compile Include="Framework\Commands\IAsyncCommand.cs" />
     <Compile Include="Interfaces\Auth\IAuthenticationService.cs" />
     <Compile Include="Interfaces\Auth\IUserService.cs" />
-    <Compile Include="Interfaces\Servers\IPmaAppServerService.cs" />
+    <Compile Include="Interfaces\Data\ILocalData.cs" />
+    <Compile Include="Interfaces\Servers\IPmaAppServer.cs" />
+    <Compile Include="Interfaces\Core\IReflectionService.cs" />
     <Compile Include="Models\AttendeeRequirement.cs" />
+    <Compile Include="Models\DataRecord.cs" />
     <Compile Include="Models\DistanceCalculationType.cs" />
     <Compile Include="Models\MeetFindFilter.cs" />
     <Compile Include="Models\MeetStatus.cs" />
@@ -62,8 +65,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\SplashScreenController.cs" />
     <Compile Include="Services\Auth\AuthenticationService.cs" />
+    <Compile Include="Services\Data\SqlLiteLocalDataService.cs" />
     <Compile Include="Services\Servers\PmaAppServerService.cs" />
+    <Compile Include="Services\Core\ReflectionService.cs" />
+    <Compile Include="swp8\Bootstrap\CommunitySqlitePluginBootstrap.cs" />
     <Compile Include="Utility\HttpRetryHelper.cs" />
+    <Compile Include="Utility\OneTimeAwaitable.cs" />
     <Compile Include="ViewModels\SplashScreenViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -78,13 +85,16 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Cirrious.CrossCore">
-      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.5.0\lib\portable-win+net45+wp8+win8+wpa81\Cirrious.CrossCore.dll</HintPath>
+      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.5.1\lib\portable-win+net45+wp8+win8+wpa81\Cirrious.CrossCore.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross">
       <HintPath>..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.5.0\lib\portable-win+net45+wp8+win8+wpa81\Cirrious.MvvmCross.dll</HintPath>
     </Reference>
+    <Reference Include="Cirrious.MvvmCross.Community.Plugins.Sqlite">
+      <HintPath>..\packages\MvvmCross.Community.Plugin.Sqlite.3.1.1\lib\portable-win+net45+MonoAndroid+MonoTouch+sl5+wp8\Cirrious.MvvmCross.Community.Plugins.Sqlite.dll</HintPath>
+    </Reference>
     <Reference Include="Cirrious.MvvmCross.Localization">
-      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.5.0\lib\portable-win+net45+wp8+win8+wpa81\Cirrious.MvvmCross.Localization.dll</HintPath>
+      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.5.1\lib\portable-win+net45+wp8+win8+wpa81\Cirrious.MvvmCross.Localization.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Plugins.Controllers">
       <HintPath>..\packages\MvvmCross.Plugins.Controllers.3.5.0\lib\portable-net45+win8+MonoAndroid+MonoTouch+wp8\Cirrious.MvvmCross.Plugins.Controllers.dll</HintPath>
@@ -97,6 +107,9 @@
     </Reference>
     <Reference Include="Flurl.Http">
       <HintPath>..\packages\Flurl.Http.0.6.0\lib\portable-net45+sl50+win+wpa81+wp80+MonoAndroid10+MonoTouch10\Flurl.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="IHS.MvvmCross.Plugins.Keychain">
+      <HintPath>..\packages\IHS.MvvmCross.Plugins.Keychain.0.0.12\lib\portable-net45+sl4+wp71+win8+monoandroid+monotouch\IHS.MvvmCross.Plugins.Keychain.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks">
       <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\portable-net45+win8+wp8+wpa81\Microsoft.Threading.Tasks.dll</HintPath>
