@@ -2,6 +2,7 @@ using Cirrious.CrossCore;
 using Cirrious.CrossCore.IoC;
 using System.Linq;
 using Cirrious.MvvmCross.Plugins.Controllers;
+using PMA.Mobile.Core.Utility.Reflection;
 
 namespace PMA.Mobile.Core
 {
@@ -14,10 +15,12 @@ namespace PMA.Mobile.Core
 
         public void InitializeIOC()
         {
-            CreatableTypes()
+            foreach (var pair in CreatableTypes()
                 .EndingWith("Service")
-                .AsInterfaces()
-                .RegisterAsLazySingleton();
+                .AsInterfaces())
+            {
+                IocHelper.LazyConstructAndRegisterSingletonForAll(pair.ServiceTypes, pair.ImplementationType);
+            }
         }
 
         protected override Cirrious.MvvmCross.ViewModels.IMvxViewModelLocator CreateDefaultViewModelLocator()

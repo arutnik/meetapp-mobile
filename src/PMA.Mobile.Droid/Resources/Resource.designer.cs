@@ -26,6 +26,8 @@ namespace PMA.Mobile.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::IHS.MvvmCross.Plugins.Keychain.Droid.Resource.String.ApplicationName = global::PMA.Mobile.Droid.Resource.String.ApplicationName;
+			global::IHS.MvvmCross.Plugins.Keychain.Droid.Resource.String.Hello = global::PMA.Mobile.Droid.Resource.String.Hello;
 		}
 		
 		public partial class Attribute
@@ -644,7 +646,13 @@ namespace PMA.Mobile.Droid
 		{
 			
 			// aapt resource value: 0x7f06001e
-			public const int app_name = 2131099678;
+			public const int ApplicationName = 2131099678;
+			
+			// aapt resource value: 0x7f06001d
+			public const int Hello = 2131099677;
+			
+			// aapt resource value: 0x7f060020
+			public const int app_name = 2131099680;
 			
 			// aapt resource value: 0x7f060011
 			public const int com_facebook_choose_friends = 2131099665;
@@ -733,11 +741,11 @@ namespace PMA.Mobile.Droid
 			// aapt resource value: 0x7f06000c
 			public const int com_facebook_usersettingsfragment_not_logged_in = 2131099660;
 			
-			// aapt resource value: 0x7f06001f
-			public const int facebook_appid = 2131099679;
+			// aapt resource value: 0x7f060021
+			public const int facebook_appid = 2131099681;
 			
-			// aapt resource value: 0x7f06001d
-			public const int hello = 2131099677;
+			// aapt resource value: 0x7f06001f
+			public const int hello = 2131099679;
 			
 			static String()
 			{

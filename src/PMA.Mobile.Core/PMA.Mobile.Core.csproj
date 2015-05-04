@@ -36,8 +36,11 @@
     <Compile Include="Events\EventBase.cs" />
     <Compile Include="Framework\Commands\AsyncCommand.cs" />
     <Compile Include="Framework\Commands\IAsyncCommand.cs" />
+    <Compile Include="Framework\ServiceInitializer.cs" />
     <Compile Include="Interfaces\Auth\IAuthenticationService.cs" />
     <Compile Include="Interfaces\Auth\IUserService.cs" />
+    <Compile Include="Interfaces\Core\IApplicationService.cs" />
+    <Compile Include="Interfaces\Core\ILogger.cs" />
     <Compile Include="Interfaces\Data\ILocalData.cs" />
     <Compile Include="Interfaces\Servers\IPmaAppServer.cs" />
     <Compile Include="Interfaces\Core\IReflectionService.cs" />
@@ -70,6 +73,7 @@
     <Compile Include="Services\Core\ReflectionService.cs" />
     <Compile Include="swp8\Bootstrap\CommunitySqlitePluginBootstrap.cs" />
     <Compile Include="Utility\HttpRetryHelper.cs" />
+    <Compile Include="Utility\Reflection\IocHelper.cs" />
     <Compile Include="Utility\OneTimeAwaitable.cs" />
     <Compile Include="ViewModels\SplashScreenViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
@@ -154,4 +158,13 @@
     <Error Condition="!Exists('..\packages\Fody.1.28.3\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.1.28.3\build\Fody.targets'))" />
   </Target>
   <ItemGroup />
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <Policies>
+          <DotNetNamingPolicy DirectoryNamespaceAssociation="PrefixedHierarchical" ResourceNamePolicy="FileFormatDefault" />
+        </Policies>
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
 </Project>

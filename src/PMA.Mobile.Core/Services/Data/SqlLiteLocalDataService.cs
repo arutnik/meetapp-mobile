@@ -14,7 +14,7 @@ using System.Linq.Expressions;
 
 namespace PMA.Mobile.Core.Services.Data
 {
-    public class SqlLiteLocalDataService : ILocalData
+	public class SqlLiteLocalDataService : ILocalData, IApplicationService
     {
         const string MainDbName = "PMA_appdata";
 
@@ -43,6 +43,8 @@ namespace PMA.Mobile.Core.Services.Data
 
         protected virtual async Task InitializeInternal()
         {
+			await Task.Delay (5000);
+
             _connection = _connectionFactory.Create(MainDbName);
 
             if (_connection == null)
