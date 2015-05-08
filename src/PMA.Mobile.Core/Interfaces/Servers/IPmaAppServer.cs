@@ -12,9 +12,23 @@ namespace PMA.Mobile.Core.Interfaces.Servers
     /// </summary>
     public interface IPmaAppServer
     {
-
+        /// <summary>
+        /// Logs in and gets or creates user profile on server using facebook
+        /// credentials.
+        /// </summary>
+        /// <param name="facebookId"></param>
+        /// <param name="facebookAccessToken"></param>
+        /// <param name="facebookUserSerialized"></param>
+        /// <returns></returns>
         Task<PmaAppServerResult<ServerLoginResult>> LogInWithFacebook(string facebookId, string facebookAccessToken, string facebookUserSerialized);
 
+        /// <summary>
+        /// Gets a view of a user profile - information returned depends
+        /// on whether it is logged in user or other user.
+        /// </summary>
+        /// <param name="userProfileId"></param>
+        /// <returns></returns>
+        Task<PmaAppServerResult<ServerUser>> GetUserById(string userProfileId);
     }
 
     /// <summary>

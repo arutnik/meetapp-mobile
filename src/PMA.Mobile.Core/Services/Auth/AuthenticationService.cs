@@ -14,19 +14,19 @@ namespace PMA.Mobile.Core.Services.Auth
 {
     public class AuthenticationService : IAuthenticationService
     {
-        public const string AppKeyChainAccount = "PMAAppCredentials";
+        
 
         readonly IPmaAppServer _appServerService;
-        readonly IKeychain _keyChain;
+        readonly ICredentialService _credentialService;
         readonly ILocalData _localData;
 
         public AuthenticationService(IPmaAppServer appServerService
-            , IKeychain keychain
+            , ICredentialService credentialService
             , ILocalData localData
             )
         {
             _appServerService = appServerService;
-            _keyChain = keychain;
+            _credentialService = credentialService;
             _localData = localData;
         }
 
@@ -43,21 +43,7 @@ namespace PMA.Mobile.Core.Services.Auth
 
         private void CleanUpCredentialStore()
         {
-            LoginDetails login = null;
-
-            do
-            {
-                try
-                {
-                    login = _keyChain.GetLoginDetails(AppKeyChainAccount);
-
-                    if (login != null)
-                    {
-                        _keyChain.DeleteAccount(AppKeyChainAccount, login.Username);
-                    }
-                }
-                catch { }
-            } while (login != null);
+            _credentialService.CleanUpAllCredentials();
         }
 
         public async Task<UserCreateResult> LogInFromFacebook(string facebookId, string facebookAccessToken, string facebookUserSerialized)
@@ -65,22 +51,47 @@ namespace PMA.Mobile.Core.Services.Auth
 
             var result = await _appServerService.LogInWithFacebook(facebookId, facebookAccessToken, facebookUserSerialized);
 
+            PmaAppServerCode finalStatus = result.Status;
             if (result.Status == PmaAppServerCode.Ok)
             {
-                try
-                {
-                    _keyChain.DeleteAccount(AppKeyChainAccount, result.Result.UserId);
-                }
-                catch { }
+                _credentialService.SetCurrentAppServerCredentials(new CredentialView(result.Result.UserId, result.Result.Password));
 
-                try
+                var loggedInUser = new LoggedInUser
                 {
-                    _keyChain.SetPassword(result.Result.Password, AppKeyChainAccount, result.Result.UserId);
+                    UserProfileId = result.Result.UserProfileId
+                };
+
+                _localData.Save(new[] { loggedInUser });
+
+                //get local profile
+
+                var userResult = await _appServerService.GetUserById(result.Result.UserProfileId);
+
+                if (userResult.Status == PmaAppServerCode.Ok)
+                {
+                    //Save to user service
                 }
-                catch { }
+                
+                finalStatus = userResult.Status;
             }
 
-            throw new NotImplementedException();
+            
+            if (finalStatus == PmaAppServerCode.Ok)
+            {
+                return UserCreateResult.Created;
+            }
+            else if (finalStatus == PmaAppServerCode.ConnectionNotAvailable)
+            {
+                return UserCreateResult.UnableToCreate_NoInternet;
+            }
+            else if (finalStatus == PmaAppServerCode.ServerNotAvailable)
+            {
+                return UserCreateResult.UnableToCreate_NoServer;
+            }
+            else
+            {
+                return UserCreateResult.UnableToCreate;
+            }
         }
 
         bool HasNeverLoggedInThisInstallation

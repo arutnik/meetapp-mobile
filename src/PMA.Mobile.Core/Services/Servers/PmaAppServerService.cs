@@ -11,11 +11,19 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PMA.Mobile.Core.Utility;
 using Cirrious.CrossCore;
+using PMA.Mobile.Core.Interfaces.Auth;
 
 namespace PMA.Mobile.Core.Services.Servers
 {
-    public class PmaAppServerService : IPmaAppServer
+    public partial class PmaAppServerService : IPmaAppServer
     {
+        ICredentialService _credentialService;
+
+        public PmaAppServerService(ICredentialService credentialService)
+        {
+            _credentialService = credentialService;
+        }
+
         public async Task<PmaAppServerResult<ServerLoginResult>> LogInWithFacebook(string facebookId, string facebookAccessToken, string facebookUserSerialized)
         {
             var url = GetBaseUrl()
@@ -23,14 +31,14 @@ namespace PMA.Mobile.Core.Services.Servers
 
             try
             {
-                ServerGenericResult serverResult = await new HttpRetryHelper<ServerGenericResult>(DefaultRetries, DefaultRetrySleep)
+                ServerResultFormat serverResult = await new HttpRetryHelper<ServerResultFormat>(DefaultRetries, DefaultRetrySleep)
                 .Method(async () =>
                 {
-                    var client = CreateClient(url);
+                    var client = CreateClient(url, AuthNeed.None);
 
                     return await client
 								.PostJsonAsync(new { fbId = facebookId, fbAccessToken = facebookAccessToken, fbUser = JsonConvert.DeserializeObject<JToken>(facebookUserSerialized) })
-                        .ReceiveJson<ServerGenericResult>();
+                        .ReceiveJson<ServerResult<JToken>>();
                 })
                 .OnCode(400, LogHttpErrorAndQuit, GetResultFromHttpException)
                 .OnCode(404, LogHttpErrorAndContinue, GetResultFromHttpException)
@@ -51,18 +59,20 @@ namespace PMA.Mobile.Core.Services.Servers
 
                 var clientResult = new ServerLoginResult();
 
-                if (serverResult.Result["userId"] == null)
+                var data = serverResult.GetResult<JToken>();
+
+                if (data["userId"] == null)
                     throw new Exception("User id not in result");
 
-                if (serverResult.Result["password"] == null)
+                if (data["password"] == null)
                     throw new Exception("password not in result");
 
-                if (serverResult.Result["userProfileId"] == null)
+                if (data["userProfileId"] == null)
                     throw new Exception("userProfileId not in result");
 
-                clientResult.UserId = serverResult.Result["userId"].Value<String>();
-                clientResult.Password = serverResult.Result["userId"].Value<String>();
-                clientResult.UserProfileId = serverResult.Result["userProfileId"].Value<string>();
+                clientResult.UserId = data["userId"].Value<String>();
+                clientResult.Password = data["userId"].Value<String>();
+                clientResult.UserProfileId = data["userProfileId"].Value<string>();
                  
                 return new PmaAppServerResult<ServerLoginResult>()
                 {
@@ -78,92 +88,55 @@ namespace PMA.Mobile.Core.Services.Servers
             return null;
         }
 
-        ServerGenericResult GetResultFromHttpException(FlurlHttpException fex)
+        public async Task<PmaAppServerResult<ServerUser>> GetUserById(string userProfileId)
         {
-            var content = fex.Call.Response.Content.ReadAsStringAsync().Result;
+            var url = GetBaseUrl()
+                    .AppendPathSegments("user", userProfileId);
+                    
 
-            return new ServerGenericResult()
+            try
             {
-                ResponseCode = (int)fex.Call.Response.StatusCode,
-                Success = false,
-                Message = content,
-            };
-        }
+                ServerResultFormat serverResult = await new HttpRetryHelper<ServerResultFormat>(DefaultRetries, DefaultRetrySleep)
+                .Method(async () =>
+                {
+                    var client = CreateClient(url, AuthNeed.User);
 
-        ServerGenericResult GetResultFromGeneralException(Exception fex)
-        {
-            var content = fex.ToString();
+                    return await client
+                                .GetJsonAsync<ServerResult<ServerUser>>()
+                        ;
+                })
+                .OnCode(400, LogHttpErrorAndQuit, GetResultFromHttpException)
+                .OnCode(404, LogHttpErrorAndContinue, GetResultFromHttpException)
+                .OnCode(500, LogHttpErrorAndContinue, GetResultFromHttpException)
+                .OnAnyOtherError(LogGeneralErrorAndContinue, GetResultFromGeneralException)
+                .Execute()
+                ;
 
-            return new ServerGenericResult()
+                if (!serverResult.Success)
+                {
+                    return new PmaAppServerResult<ServerUser>()
+                    {
+                        Message = "Failed",
+                        Result = new ServerUser(),
+                        Status = PmaAppServerCode.ConnectionNotAvailable
+                    };
+                }
+
+                 
+                return new PmaAppServerResult<ServerUser>()
+                {
+                    Result = serverResult.GetResult<ServerUser>()
+                };
+            }
+            catch (Exception ex)
             {
-                ResponseCode = (int)500,
-                Success = false,
-                Message = content,
-            };
+                Mvx.Error(ex.ToString());
+                //Log unexpected / parsing error
+            }
+
+            return null;
         }
 
-        bool LogGeneralErrorAndContinue(Exception ex)
-        {
-            Mvx.Error(ex.Message);
-            return true;
-        }
-
-        bool LogHttpErrorAndContinue(FlurlHttpException fex)
-        {
-            Mvx.Error(fex.Message);
-            return true;
-        }
-
-        bool LogHttpErrorAndQuit(FlurlHttpException fex)
-        {
-            Mvx.Error(fex.Message);
-            return false;
-        }
-
-        int DefaultRetries
-        {
-            get { return 3; }
-        }
-
-        TimeSpan DefaultRetrySleep
-        {
-            get { return TimeSpan.FromMilliseconds(500); }
-        }
-
-        private FlurlClient CreateClient(Url url)
-        {
-            var client = url.ConfigureHttpClient((c) => { });
-
-            //Add Hash param
-
-            //Add basic auth
-
-            return client;
-        }
-
-        string GetBaseUrl()
-        {
-            return @"http://192.168.1.3:3000/api";
-        }
-
-        public class ServerGenericResult
-        {
-            [JsonProperty("success")]
-            public bool Success { get; set; }
-
-            [JsonProperty("result")]
-            public JToken Result { get; set; }
-
-            [JsonProperty("responseCode")]
-            public int ResponseCode { get; set; }
-
-            [JsonProperty("message")]
-            public string Message { get; set; }
-        }
-
-        private void LogError(string message)
-        {
-
-        }
+        
     }
 }

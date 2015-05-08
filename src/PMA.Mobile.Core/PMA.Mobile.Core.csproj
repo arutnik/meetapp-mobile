@@ -38,6 +38,7 @@
     <Compile Include="Framework\Commands\IAsyncCommand.cs" />
     <Compile Include="Framework\ServiceInitializer.cs" />
     <Compile Include="Interfaces\Auth\IAuthenticationService.cs" />
+    <Compile Include="Interfaces\Auth\ICredentialService.cs" />
     <Compile Include="Interfaces\Auth\IUserService.cs" />
     <Compile Include="Interfaces\Core\IApplicationService.cs" />
     <Compile Include="Interfaces\Core\ILogger.cs" />
@@ -47,6 +48,7 @@
     <Compile Include="Models\AttendeeRequirement.cs" />
     <Compile Include="Models\DataRecord.cs" />
     <Compile Include="Models\DistanceCalculationType.cs" />
+    <Compile Include="Models\LoggedInUser.cs" />
     <Compile Include="Models\MeetFindFilter.cs" />
     <Compile Include="Models\MeetStatus.cs" />
     <Compile Include="Models\OtherUserProfile.cs" />
@@ -63,14 +65,17 @@
     <Compile Include="Models\MeetHubData.cs" />
     <Compile Include="Models\PersonName.cs" />
     <Compile Include="Models\Servers\ServerLoginResult.cs" />
+    <Compile Include="Models\Servers\ServerUser.cs" />
     <Compile Include="Models\UserProfileBase.cs" />
     <Compile Include="Models\UserRef.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\SplashScreenController.cs" />
     <Compile Include="Services\Auth\AuthenticationService.cs" />
+    <Compile Include="Services\Auth\CredentialService.cs" />
     <Compile Include="Services\Data\SqlLiteLocalDataService.cs" />
     <Compile Include="Services\Servers\PmaAppServerService.cs" />
     <Compile Include="Services\Core\ReflectionService.cs" />
+    <Compile Include="Services\Servers\PmaAppServerServiceUtility.cs" />
     <Compile Include="swp8\Bootstrap\CommunitySqlitePluginBootstrap.cs" />
     <Compile Include="Utility\HttpRetryHelper.cs" />
     <Compile Include="Utility\Reflection\IocHelper.cs" />
