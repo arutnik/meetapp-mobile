@@ -8,5 +8,6 @@ namespace PMA.Mobile.Core.Models
 {
     public class Gender
     {
+        public string Id { get; set;}
     }
 }

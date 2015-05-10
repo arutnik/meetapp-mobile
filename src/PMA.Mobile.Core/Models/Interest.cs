@@ -15,7 +15,7 @@ namespace PMA.Mobile.Core.Models
 
         public override object PrimaryKey
         {
-            get { return null; }
+            get { return Id; }
         }
     }
 }

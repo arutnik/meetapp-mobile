@@ -8,5 +8,14 @@ namespace PMA.Mobile.Core.Models
 {
     public class PersonName
     {
+        public string FirstName { get; private set; }
+
+        public string LastName { get; private set; }
+
+        public PersonName(string firstName, string lastName)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+        }
     }
 }

@@ -19,14 +19,17 @@ namespace PMA.Mobile.Core.Services.Auth
         readonly IPmaAppServer _appServerService;
         readonly ICredentialService _credentialService;
         readonly ILocalData _localData;
+        readonly IUserService _userService;
 
         public AuthenticationService(IPmaAppServer appServerService
+            , IUserService userService
             , ICredentialService credentialService
             , ILocalData localData
             )
         {
             _appServerService = appServerService;
             _credentialService = credentialService;
+            _userService = userService;
             _localData = localData;
         }
 
@@ -65,14 +68,13 @@ namespace PMA.Mobile.Core.Services.Auth
 
                 //get local profile
 
-                var userResult = await _appServerService.GetUserById(result.Result.UserProfileId);
+                var userResult = await _userService.RefreshCurrentUserData();
 
-                if (userResult.Status == PmaAppServerCode.Ok)
-                {
-                    //Save to user service
-                }
                 
-                finalStatus = userResult.Status;
+                if (userResult != UserCreateResult.Created)
+                {
+                    return userResult;
+                }
             }
 
             
