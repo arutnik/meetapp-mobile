@@ -71,7 +71,7 @@ namespace PMA.Mobile.Core.Services.Servers
                     throw new Exception("userProfileId not in result");
 
                 clientResult.UserId = data["userId"].Value<String>();
-                clientResult.Password = data["userId"].Value<String>();
+                clientResult.Password = data["password"].Value<String>();
                 clientResult.UserProfileId = data["userProfileId"].Value<string>();
                  
                 return new PmaAppServerResult<ServerLoginResult>()
