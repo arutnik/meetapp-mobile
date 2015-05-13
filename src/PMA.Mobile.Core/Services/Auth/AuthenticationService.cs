@@ -33,15 +33,23 @@ namespace PMA.Mobile.Core.Services.Auth
             _localData = localData;
         }
 
-        public Task<AutoLoginResult> TryAutoLogin()
+        public async Task<AutoLoginResult> TryAutoLogin()
         {
             if (HasNeverLoggedInThisInstallation)
             {
                 CleanUpCredentialStore();
-                return Task.FromResult(AutoLoginResult.NoCredentials);
+                return AutoLoginResult.NoCredentials;
             }
 
-            return Task.FromResult(AutoLoginResult.NoCredentials);
+			//TODO Check if you have credentials before calling service...
+			var loginResult = await _userService.RefreshCurrentUserData();
+
+			if (loginResult == UserCreateResult.Created)
+			{
+				return AutoLoginResult.OnlineLoggedIn;
+			}
+
+            return AutoLoginResult.NoCredentials;
         }
 
         private void CleanUpCredentialStore()

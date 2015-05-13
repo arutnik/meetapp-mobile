@@ -25,7 +25,7 @@ namespace PMA.Mobile.Core.Controllers
 
 			if (user.UserPictureUris.Any ())
 			{
-				ViewModel.ProfilePictureUrl = @"http://i.imgur.com/lIhJX55.jpg";// user.UserPictureUris.First ();
+				ViewModel.ProfilePictureUrl = user.UserPictureUris.First ();
 			}
 		}
 	}
