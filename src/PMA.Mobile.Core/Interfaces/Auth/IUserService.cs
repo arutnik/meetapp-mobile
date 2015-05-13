@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PMA.Mobile.Core.Models;
 
 namespace PMA.Mobile.Core.Interfaces.Auth
 {
@@ -20,6 +21,12 @@ namespace PMA.Mobile.Core.Interfaces.Auth
         /// </summary>
         /// <returns></returns>
         bool IsCurrentUserProfileComplete();
+
+		/// <summary>
+		/// Gets the current user.
+		/// </summary>
+		/// <value>The current user.</value>
+		LocalUserProfile CurrentUser { get; }
     }
 
     

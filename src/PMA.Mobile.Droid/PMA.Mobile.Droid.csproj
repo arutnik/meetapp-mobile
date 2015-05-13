@@ -105,6 +105,7 @@
     <Compile Include="Views\MainFrameView.cs" />
     <Compile Include="Bootstrap\CommunitySqlitePluginBootstrap.cs" />
     <Compile Include="Bootstrap\KeychainPluginBootstrap.cs" />
+    <Compile Include="Views\UpdateProfileView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -129,6 +130,7 @@
     <AndroidResource Include="Resources\layout\static_splash_screen.axml" />
     <AndroidResource Include="Resources\layout\activity_login.axml" />
     <AndroidResource Include="Resources\layout\activity_main_frame.axml" />
+    <AndroidResource Include="Resources\layout\activity_update_profile.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup />
