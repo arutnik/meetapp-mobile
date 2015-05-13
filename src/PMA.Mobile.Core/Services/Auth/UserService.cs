@@ -24,6 +24,21 @@ namespace PMA.Mobile.Core
 
 		public bool IsCurrentUserProfileComplete ()
 		{
+			if (CurrentUser == null)
+			{
+				return false;
+			}
+
+			if (CurrentUser.Dob.Year < 1900)
+			{
+				return false;
+			}
+
+			if (CurrentUser.UserPictureUris.Count () == 0)
+			{
+				return false;
+			}
+
 			return true;
 		}
 
@@ -71,6 +86,8 @@ namespace PMA.Mobile.Core
                 RealName = new PersonName(serverResult.Result.RealName.FirstName, serverResult.Result.RealName.LastName),
 
             };
+
+			localUser.UserPictureUris = serverResult.Result.Pictures.Select (p => p.Uri).ToArray ();
 
             //TODO interests, pictures, meets
 

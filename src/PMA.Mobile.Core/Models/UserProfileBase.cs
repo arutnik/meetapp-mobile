@@ -58,8 +58,25 @@ namespace PMA.Mobile.Core.Models
 
         public string _Interests { get; set; }
 
-        public string _GenderId { get; set;}
+        public string _GenderId { get; set; }
+
+		public string _UserPictureRawUrls { 
+			get { return JsonConvert.SerializeObject (UserPictureUris); }
+			set { 
+				try
+				{
+					UserPictureUris = JsonConvert.DeserializeObject<string[]> (value);
+				} catch
+				{
+				}
+			}
+		}
 
         #endregion
+
+		public UserProfileBase()
+		{
+			UserPictureUris = new string[0];
+		}
     }
 }

@@ -18,8 +18,16 @@ namespace PMA.Mobile.Core.Models.Servers
         [JsonProperty("gender")]
         public string Gender { get; set; }
 
+		[JsonProperty("pictures")]
+		public ServerPicture[] Pictures { get; set; }
+
         [JsonProperty("searchCriteria")]
         public ServerSearchCriteria SearchCriteria { get; set; }
+
+		public ServerUser()
+		{
+			Pictures = new ServerPicture[0];
+		}
     }
 
     public class ServerName

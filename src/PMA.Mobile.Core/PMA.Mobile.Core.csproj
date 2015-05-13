@@ -87,6 +87,7 @@
     <Compile Include="Controllers\MainFrameController.cs" />
     <Compile Include="ViewModels\UpdateProfileViewModel.cs" />
     <Compile Include="Services\Auth\UserService.cs" />
+    <Compile Include="Models\Servers\ServerPicture.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
