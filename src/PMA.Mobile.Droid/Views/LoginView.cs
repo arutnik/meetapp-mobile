@@ -20,9 +20,14 @@ using Newtonsoft.Json;
 
 namespace PMA.Mobile.Droid.Views
 {
-	[Activity (Label = "LoginView")]			
+	[Activity (Label = "LoginView"
+		, Theme = "@style/Theme.Login"
+	)]			
 	public class LoginView : MvxActivity, Session.IStatusCallback, Request.IGraphUserCallback, LoginButton.IUserInfoChangedCallback
 	{
+		LoginButton _loginButton;
+		TextView _loginStatusText;
+
 		public LoginViewModel LoginViewModel
 		{
 			get { return ViewModel as LoginViewModel; }
@@ -34,16 +39,21 @@ namespace PMA.Mobile.Droid.Views
 
 			SetContentView(Resource.Layout.activity_login);
 
-			var nativeButton = (LoginButton)FindViewById(Resource.Id.btn_native_facebooklogin);
-			nativeButton.SetReadPermissions(new[] { "user_interests", "user_birthday", "user_activities", "email", "user_friends", "public_profile" });
-			nativeButton.UserInfoChangedCallback = this;
-			nativeButton.SessionStatusCallback = this;
+			_loginButton = (LoginButton)FindViewById(Resource.Id.btn_native_facebooklogin);
+			_loginButton.SetReadPermissions(new[] { "user_interests", "user_birthday", "user_activities", "email", "user_friends", "public_profile" });
+			_loginButton.UserInfoChangedCallback = this;
+			_loginButton.SessionStatusCallback = this;
+
+			_loginStatusText = (TextView)FindViewById (Resource.Id.txt_login_loginstatus);
 		}
 
 		public void OnUserInfoFetched (Xamarin.Facebook.Model.IGraphUser user)
 		{
 			if (user != null)
 			{
+				_loginButton.Visibility = ViewStates.Invisible;
+				_loginStatusText.Visibility = ViewStates.Visible;
+
 				LoginViewModel.LogInWithFacebook.ExecuteAsync (CreateLogInInfo(user));
 				Mvx.Trace("Got the user {0} {1}", user.FirstName, Session.ActiveSession.AccessToken);
 			}

@@ -41,6 +41,13 @@ namespace PMA.Mobile.Core.Services.Auth
                 return AutoLoginResult.NoCredentials;
             }
 
+			var credentials = _credentialService.GetCurrentAppServerCredentials ();
+
+			if (credentials == null)
+			{
+				return AutoLoginResult.NoCredentials;
+			}
+
 			//TODO Check if you have credentials before calling service...
 			var loginResult = await _userService.RefreshCurrentUserData();
 

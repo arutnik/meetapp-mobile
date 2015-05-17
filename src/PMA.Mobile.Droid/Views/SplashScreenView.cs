@@ -17,8 +17,11 @@ using Cirrious.CrossCore;
 
 namespace PMA.Mobile.Droid.Views
 {
-	[Activity (Label = "SplashScreenView")]			
-	public class SplashScreenView : MvxActivity, Session.IStatusCallback
+	[Activity (Label = "SplashScreenView"
+		, Theme = "@style/Theme.Splash"
+		, NoHistory = true
+	)]			
+	public class SplashScreenView : MvxActivity
 	{
 		public new SplashScreenViewModel ViewModel
 		{
@@ -30,36 +33,19 @@ namespace PMA.Mobile.Droid.Views
 		{
 			base.OnCreate (bundle);
 
-			// Create your application here
 		}
 
-		protected override async void OnViewModelSet ()
+		protected override void OnStart ()
+		{
+			base.OnStart ();
+
+		}
+
+		protected override void OnViewModelSet ()
 		{
 			base.OnViewModelSet ();
 
 			SetContentView(Resource.Layout.activity_splash_screen);
-
-			await ViewModel.Controller.WaitForInitialize();
-
-			var session = Session.OpenActiveSession(this, false, this);
-
-			if (session == null)
-			{
-				//ViewModel.OnIsLoggedIn.Execute(false);
-			}
-		}
-
-		public void Call (Session session, SessionState p1, Java.Lang.Exception p2)
-		{
-			if (session != null && session.IsOpened)
-			{
-				Mvx.Trace("Got the user at:{0}", Session.ActiveSession.AccessToken);
-				//ViewModel.OnIsLoggedIn.Execute(true);
-			}
-			else
-			{
-				//ViewModel.OnIsLoggedIn.Execute(false);
-			}
 		}
 	}
 }

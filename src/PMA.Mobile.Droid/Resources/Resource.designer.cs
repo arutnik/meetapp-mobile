@@ -348,8 +348,8 @@ namespace PMA.Mobile.Droid
 			// aapt resource value: 0x7f020016
 			public const int com_facebook_logo = 2130837526;
 			
-			// aapt resource value: 0x7f020031
-			public const int com_facebook_picker_default_separator_color = 2130837553;
+			// aapt resource value: 0x7f020033
+			public const int com_facebook_picker_default_separator_color = 2130837555;
 			
 			// aapt resource value: 0x7f020017
 			public const int com_facebook_picker_item_background = 2130837527;
@@ -429,6 +429,12 @@ namespace PMA.Mobile.Droid
 			// aapt resource value: 0x7f020030
 			public const int splash = 2130837552;
 			
+			// aapt resource value: 0x7f020031
+			public const int static_background = 2130837553;
+			
+			// aapt resource value: 0x7f020032
+			public const int static_background_with_title = 2130837554;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -460,80 +466,80 @@ namespace PMA.Mobile.Droid
 			// aapt resource value: 0x7f08000a
 			public const int center = 2131230730;
 			
-			// aapt resource value: 0x7f080020
-			public const int com_facebook_body_frame = 2131230752;
-			
-			// aapt resource value: 0x7f080022
-			public const int com_facebook_button_xout = 2131230754;
-			
-			// aapt resource value: 0x7f080010
-			public const int com_facebook_login_activity_progress_bar = 2131230736;
-			
-			// aapt resource value: 0x7f08000f
-			public const int com_facebook_picker_activity_circle = 2131230735;
-			
-			// aapt resource value: 0x7f080012
-			public const int com_facebook_picker_checkbox = 2131230738;
-			
-			// aapt resource value: 0x7f080016
-			public const int com_facebook_picker_checkbox_stub = 2131230742;
-			
-			// aapt resource value: 0x7f08001a
-			public const int com_facebook_picker_divider = 2131230746;
-			
-			// aapt resource value: 0x7f080019
-			public const int com_facebook_picker_done_button = 2131230745;
-			
-			// aapt resource value: 0x7f080013
-			public const int com_facebook_picker_image = 2131230739;
-			
-			// aapt resource value: 0x7f080017
-			public const int com_facebook_picker_list_section_header = 2131230743;
-			
-			// aapt resource value: 0x7f08000e
-			public const int com_facebook_picker_list_view = 2131230734;
-			
-			// aapt resource value: 0x7f080014
-			public const int com_facebook_picker_profile_pic_stub = 2131230740;
-			
-			// aapt resource value: 0x7f080011
-			public const int com_facebook_picker_row_activity_circle = 2131230737;
-			
-			// aapt resource value: 0x7f08001f
-			public const int com_facebook_picker_search_text = 2131230751;
-			
-			// aapt resource value: 0x7f080015
-			public const int com_facebook_picker_title = 2131230741;
-			
-			// aapt resource value: 0x7f08001c
-			public const int com_facebook_picker_title_bar = 2131230748;
-			
-			// aapt resource value: 0x7f08001b
-			public const int com_facebook_picker_title_bar_stub = 2131230747;
-			
-			// aapt resource value: 0x7f080018
-			public const int com_facebook_picker_top_bar = 2131230744;
-			
-			// aapt resource value: 0x7f08001e
-			public const int com_facebook_search_bar_view = 2131230750;
-			
-			// aapt resource value: 0x7f080024
-			public const int com_facebook_tooltip_bubble_view_bottom_pointer = 2131230756;
+			// aapt resource value: 0x7f080021
+			public const int com_facebook_body_frame = 2131230753;
 			
 			// aapt resource value: 0x7f080023
-			public const int com_facebook_tooltip_bubble_view_text_body = 2131230755;
+			public const int com_facebook_button_xout = 2131230755;
 			
-			// aapt resource value: 0x7f080021
-			public const int com_facebook_tooltip_bubble_view_top_pointer = 2131230753;
+			// aapt resource value: 0x7f080011
+			public const int com_facebook_login_activity_progress_bar = 2131230737;
 			
-			// aapt resource value: 0x7f080027
-			public const int com_facebook_usersettingsfragment_login_button = 2131230759;
+			// aapt resource value: 0x7f080010
+			public const int com_facebook_picker_activity_circle = 2131230736;
+			
+			// aapt resource value: 0x7f080013
+			public const int com_facebook_picker_checkbox = 2131230739;
+			
+			// aapt resource value: 0x7f080017
+			public const int com_facebook_picker_checkbox_stub = 2131230743;
+			
+			// aapt resource value: 0x7f08001b
+			public const int com_facebook_picker_divider = 2131230747;
+			
+			// aapt resource value: 0x7f08001a
+			public const int com_facebook_picker_done_button = 2131230746;
+			
+			// aapt resource value: 0x7f080014
+			public const int com_facebook_picker_image = 2131230740;
+			
+			// aapt resource value: 0x7f080018
+			public const int com_facebook_picker_list_section_header = 2131230744;
+			
+			// aapt resource value: 0x7f08000f
+			public const int com_facebook_picker_list_view = 2131230735;
+			
+			// aapt resource value: 0x7f080015
+			public const int com_facebook_picker_profile_pic_stub = 2131230741;
+			
+			// aapt resource value: 0x7f080012
+			public const int com_facebook_picker_row_activity_circle = 2131230738;
+			
+			// aapt resource value: 0x7f080020
+			public const int com_facebook_picker_search_text = 2131230752;
+			
+			// aapt resource value: 0x7f080016
+			public const int com_facebook_picker_title = 2131230742;
+			
+			// aapt resource value: 0x7f08001d
+			public const int com_facebook_picker_title_bar = 2131230749;
+			
+			// aapt resource value: 0x7f08001c
+			public const int com_facebook_picker_title_bar_stub = 2131230748;
+			
+			// aapt resource value: 0x7f080019
+			public const int com_facebook_picker_top_bar = 2131230745;
+			
+			// aapt resource value: 0x7f08001f
+			public const int com_facebook_search_bar_view = 2131230751;
 			
 			// aapt resource value: 0x7f080025
-			public const int com_facebook_usersettingsfragment_logo_image = 2131230757;
+			public const int com_facebook_tooltip_bubble_view_bottom_pointer = 2131230757;
+			
+			// aapt resource value: 0x7f080024
+			public const int com_facebook_tooltip_bubble_view_text_body = 2131230756;
+			
+			// aapt resource value: 0x7f080022
+			public const int com_facebook_tooltip_bubble_view_top_pointer = 2131230754;
+			
+			// aapt resource value: 0x7f080028
+			public const int com_facebook_usersettingsfragment_login_button = 2131230760;
 			
 			// aapt resource value: 0x7f080026
-			public const int com_facebook_usersettingsfragment_profile_name = 2131230758;
+			public const int com_facebook_usersettingsfragment_logo_image = 2131230758;
+			
+			// aapt resource value: 0x7f080027
+			public const int com_facebook_usersettingsfragment_profile_name = 2131230759;
 			
 			// aapt resource value: 0x7f080008
 			public const int inline = 2131230728;
@@ -547,8 +553,8 @@ namespace PMA.Mobile.Droid
 			// aapt resource value: 0x7f080002
 			public const int normal = 2131230722;
 			
-			// aapt resource value: 0x7f08001d
-			public const int picker_subtitle = 2131230749;
+			// aapt resource value: 0x7f08001e
+			public const int picker_subtitle = 2131230750;
 			
 			// aapt resource value: 0x7f08000c
 			public const int right = 2131230732;
@@ -561,6 +567,9 @@ namespace PMA.Mobile.Droid
 			
 			// aapt resource value: 0x7f080009
 			public const int top = 2131230729;
+			
+			// aapt resource value: 0x7f08000e
+			public const int txt_login_loginstatus = 2131230734;
 			
 			static Id()
 			{
@@ -764,7 +773,13 @@ namespace PMA.Mobile.Droid
 		{
 			
 			// aapt resource value: 0x7f070003
-			public const int Theme_Splash = 2131165187;
+			public const int Theme_Login = 2131165187;
+			
+			// aapt resource value: 0x7f070004
+			public const int Theme_Splash = 2131165188;
+			
+			// aapt resource value: 0x7f070005
+			public const int Theme_UpdateProfile = 2131165189;
 			
 			// aapt resource value: 0x7f070000
 			public const int com_facebook_loginview_default_style = 2131165184;

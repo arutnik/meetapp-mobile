@@ -20,7 +20,9 @@ using Newtonsoft.Json;
 
 namespace PMA.Mobile.Droid.Views
 {
-	[Activity (Label = "UpdatEProfileView")]			
+	[Activity (Label = "UpdatEProfileView"
+		, Theme = "@style/Theme.UpdateProfile"
+	)]			
 	public class UpdateProfileView : MvxActivity
 	{
 		public UpdateProfileViewModel UpdateProfileViewModel

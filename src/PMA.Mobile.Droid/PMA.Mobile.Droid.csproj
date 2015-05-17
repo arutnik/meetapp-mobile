@@ -141,7 +141,6 @@
     <AndroidResource Include="Resources\drawable-xhdpi\Icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\Icon.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\Icon.png" />
-    <AndroidResource Include="Resources\drawable\splash.png" />
     <AndroidResource Include="Resources\values\MvxBindingAttributes.xml" />
     <AndroidResource Include="Resources\values\SplashStyle.xml" />
     <AndroidResource Include="Resources\layout\activity_splash_screen.axml" />
@@ -149,6 +148,19 @@
     <AndroidResource Include="Resources\layout\activity_login.axml" />
     <AndroidResource Include="Resources\layout\activity_main_frame.axml" />
     <AndroidResource Include="Resources\layout\activity_update_profile.axml" />
+    <AndroidResource Include="Resources\drawable\splash.png" />
+    <AndroidResource Include="Resources\values\LoginStyle.xml" />
+    <AndroidResource Include="Resources\values\UpdateProfileStyle.xml" />
+    <AndroidResource Include="Resources\drawable-mdpi\static_background.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\static_background_with_title.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\static_background.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\static_background_with_title.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\static_background.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\static_background_with_title.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\static_background.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\static_background_with_title.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\static_background.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\static_background_with_title.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup />

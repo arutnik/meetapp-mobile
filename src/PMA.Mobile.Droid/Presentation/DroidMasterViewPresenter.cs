@@ -8,7 +8,7 @@ namespace PMA.Mobile.Droid.Presentation
 	{
 		#region IMvxViewPresenter implementation
 
-		public void Show (Cirrious.MvvmCross.ViewModels.MvxViewModelRequest request)
+		public override void Show (Cirrious.MvvmCross.ViewModels.MvxViewModelRequest request)
 		{
 			if (request.ViewModelType == typeof(SplashScreenViewModel))
 			{
@@ -16,8 +16,10 @@ namespace PMA.Mobile.Droid.Presentation
 			}
 		}
 
-		public void ChangePresentation (Cirrious.MvvmCross.ViewModels.MvxPresentationHint hint)
+		public override void ChangePresentation (Cirrious.MvvmCross.ViewModels.MvxPresentationHint hint)
 		{
+			
+
 			base.ChangePresentation(hint);
 		}
 

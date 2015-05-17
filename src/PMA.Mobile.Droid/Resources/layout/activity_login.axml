@@ -9,4 +9,12 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/btn_native_facebooklogin" />
+    <TextView
+        android:visibility="invisible"
+        android:id="@+id/txt_login_loginstatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:text="Logging in..." />
 </RelativeLayout>

@@ -22,8 +22,6 @@ namespace PMA.Mobile.Core.Controllers
 
 		protected override async Task OnControllerInitialize ()
 		{
-			await base.OnControllerInitialize ();
-
             var result = await Task.Factory.StartNew(() => _authService.TryAutoLogin().Result);
 
             OnAutoLoginResult(result);
