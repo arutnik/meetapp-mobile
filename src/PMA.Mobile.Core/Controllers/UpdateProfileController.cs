@@ -3,6 +3,7 @@ using PMA.Mobile.Core.ViewModels;
 using System.Linq;
 using PMA.Mobile.Core.Interfaces.Auth;
 using System.Threading.Tasks;
+using Cirrious.MvvmCross.ViewModels;
 
 namespace PMA.Mobile.Core.Controllers
 {
@@ -17,7 +18,9 @@ namespace PMA.Mobile.Core.Controllers
 
 		protected override async System.Threading.Tasks.Task OnControllerInitialize ()
 		{
-			await base.OnControllerInitialize ();
+			await base.OnControllerInitialize();
+
+			ViewModel.DoneCommand = new MvxCommand(OnDone);
 
 			var user = _userService.CurrentUser;
 
@@ -25,10 +28,15 @@ namespace PMA.Mobile.Core.Controllers
 			ViewModel.LastName = user.RealName.LastName;
 			ViewModel.UserFullName = user.RealName.FirstName + " " + user.RealName.LastName;
 
-			if (user.UserPictureUris.Any ())
+			if (user.UserPictureUris.Any())
 			{
 				ViewModel.ProfilePictureUrl = user.UserPictureUris.First ();
 			}
+		}
+
+		private void OnDone()
+		{
+			ShowViewModel<MainFrameViewModel>();
 		}
 	}
 }

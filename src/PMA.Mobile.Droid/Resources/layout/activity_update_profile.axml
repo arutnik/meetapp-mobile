@@ -40,4 +40,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/lay_updpro_center"
         local:MvxBind="Text UserFullName" />
+    <Button
+        android:layout_alignParentRight="true"
+        android:text="@string/str_updpro_donebutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button1"
+        local:MvxBind="Click DoneCommand"
+        android:layout_margin="10dip" />
 </RelativeLayout>

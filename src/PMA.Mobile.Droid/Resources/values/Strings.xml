@@ -6,4 +6,5 @@
 
 	<!-- Update Profile -->
 	<string name="str_updpro_yourprofile">Your Profile</string>
+	<string name="str_updpro_donebutton">Done</string>
 </resources>

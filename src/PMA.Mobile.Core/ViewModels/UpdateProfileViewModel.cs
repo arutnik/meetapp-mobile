@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace PMA.Mobile.Core.ViewModels
 {
@@ -16,14 +17,12 @@ namespace PMA.Mobile.Core.ViewModels
 
 		public string UserFullName { get; set; }
 
-		string _p;
-		//public string ProfilePictureUrl { get; set; }
-
 		public string ProfilePictureUrl
 		{
-			get { return _p; }
-			set { SetProperty (ref _p, value); }
+			get;
+			set;
 		}
 
+		public ICommand DoneCommand { get; set; }
     }
 }
