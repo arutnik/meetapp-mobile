@@ -3,4 +3,7 @@
 	<string name="hello">Hello World, Click Me!</string>
 	<string name="app_name">PMA.Mobile.Droid</string>
 	<string name="facebook_appid">1526324340946630</string>
+
+	<!-- Update Profile -->
+	<string name="str_updpro_yourprofile">Your Profile</string>
 </resources>

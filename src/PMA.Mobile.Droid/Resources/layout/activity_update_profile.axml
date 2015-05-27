@@ -4,10 +4,40 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
-    <Mvx.MvxImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        local:MvxBind="ImageUrl ProfilePictureUrl" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lay_updpro_center" />
+    <TextView
+        android:text="@string/str_updpro_yourprofile"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/txt_updpro_yourprofile"
+        android:layout_above="@+id/lay_updpro_mainpicframe"
+        android:layout_marginBottom="10dp" />
+    <FrameLayout
+        android:layout_centerHorizontal="true"
+        android:layout_width="100dip"
+        android:layout_height="100dip"
+        android:layout_above="@+id/lay_updpro_center"
+        android:id="@+id/lay_updpro_mainpicframe">
+        <Mvx.MvxImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            local:MvxBind="ImageUrl ProfilePictureUrl"
+            android:id="@+id/img_updpro_mainpic" />
+    </FrameLayout>
+    <EditText
+        android:layout_centerHorizontal="true"
+        android:layout_width="200dip"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lay_updpro_center"
+        local:MvxBind="Text UserFullName" />
 </RelativeLayout>

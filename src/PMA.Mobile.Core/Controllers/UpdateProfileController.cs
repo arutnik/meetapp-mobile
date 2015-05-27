@@ -2,6 +2,7 @@
 using PMA.Mobile.Core.ViewModels;
 using System.Linq;
 using PMA.Mobile.Core.Interfaces.Auth;
+using System.Threading.Tasks;
 
 namespace PMA.Mobile.Core.Controllers
 {
@@ -22,6 +23,7 @@ namespace PMA.Mobile.Core.Controllers
 
 			ViewModel.FirstName = user.RealName.FirstName;
 			ViewModel.LastName = user.RealName.LastName;
+			ViewModel.UserFullName = user.RealName.FirstName + " " + user.RealName.LastName;
 
 			if (user.UserPictureUris.Any ())
 			{

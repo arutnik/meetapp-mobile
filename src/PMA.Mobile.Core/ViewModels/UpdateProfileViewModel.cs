@@ -14,6 +14,8 @@ namespace PMA.Mobile.Core.ViewModels
 
 		public string LastName { get; set; }
 
+		public string UserFullName { get; set; }
+
 		string _p;
 		//public string ProfilePictureUrl { get; set; }
 
